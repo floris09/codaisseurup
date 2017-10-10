@@ -10,10 +10,49 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171009120305) do
+ActiveRecord::Schema.define(version: 20171010093303) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.string "location"
+    t.decimal "price"
+    t.integer "capacity"
+    t.boolean "includes_food"
+    t.boolean "includes_drinks"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_events_on_user_id"
+  end
+
+  create_table "rooms", force: :cascade do |t|
+    t.string "home_type"
+    t.string "room_type"
+    t.integer "accommodate"
+    t.integer "bedroom_count"
+    t.integer "bathroom_count"
+    t.string "listing_name"
+    t.text "description"
+    t.string "address"
+    t.boolean "has_tv"
+    t.boolean "has_kitchen"
+    t.boolean "has_airco"
+    t.boolean "has_heating"
+    t.boolean "has_internet"
+    t.decimal "price"
+    t.boolean "active"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_rooms_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -32,4 +71,6 @@ ActiveRecord::Schema.define(version: 20171009120305) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "users"
+  add_foreign_key "rooms", "users"
 end
