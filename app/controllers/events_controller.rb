@@ -1,6 +1,6 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:show, :edit, :update]
-  before_action :authenticate_user! except: [:show]
+  before_action :authenticate_user!, except: [:show]
 
   def index
     @events = current_user.events
@@ -27,6 +27,11 @@ class EventsController < ApplicationController
   end
 
   def update
+    if @event.update(event_params)
+      redirect_to @event, notice: "Event Updated"
+    else
+      render "edit"
+    end
   end
 
   private
