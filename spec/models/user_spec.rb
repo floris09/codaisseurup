@@ -1,5 +1,17 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+    let(:user) { create :user }
+    let!(:event) { create :event, user: user }
+
+  describe "Association to events" do
+    it { is_expected.to have_many :events }
+  end
+
+  it "deletes associated events" do
+    expect { user.destroy }.to change{ user.events.count }.by(-1)
+  end
+
+
 end
