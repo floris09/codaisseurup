@@ -3,4 +3,7 @@ class PagesController < ApplicationController
     @categories = Category.all
   end
 
+  def about
+  end
+
 end
