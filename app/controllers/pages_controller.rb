@@ -3,7 +3,4 @@ class PagesController < ApplicationController
     @categories = Category.all
   end
 
-  def index
-    @events = Event.all
-  end
 end
