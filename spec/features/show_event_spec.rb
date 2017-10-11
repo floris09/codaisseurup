@@ -1,0 +1,17 @@
+require 'rails_helper'
+
+describe 'Viewing an individual event' do
+  let(:user) { create :user }
+  let(:event) { create :event, user: user }
+
+  it "shows event details" do
+    visit event_url(event)
+
+    expect(page).to have_text(event.name)
+    expect(page).to have_text(event.description)
+    expect(page).to have_text(event.location)
+    expect(page).to have_text(event.price)
+    expect(page).to have_text(event.capacity)
+
+  end
+end
