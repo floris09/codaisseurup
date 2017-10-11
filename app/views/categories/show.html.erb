@@ -1,0 +1,7 @@
+<h1><%= @category.name %></h1>
+
+<% @category.events.each do |event| %>
+<p> <%= link_to event.name, event %> </p>
+<% end %>
+
+<h4> <%= link_to "Back to Home Page", root_path %> </h4>
