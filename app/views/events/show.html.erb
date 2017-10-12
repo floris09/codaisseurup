@@ -23,6 +23,11 @@
       <li><%= !@event.includes_drinks ? ("<del>Drinks</del>").html_safe : "Drinks" %></li>
     </ul>
 
+    <h4>Photos</h4>
+    <% @event.photos.each do |photo| %>
+      <%= image_tag photo.image %>
+    <% end %>
+
     <!-- Categories -->
     <h4>Categories</h4>
     <% @categories.each do |category| %>
