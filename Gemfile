@@ -60,6 +60,8 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
 end
 
+gem 'cloudinary', '1.2.3'
+
 gem 'carrierwave', '0.11.2'
 
 gem 'rails_12factor', group: :production
