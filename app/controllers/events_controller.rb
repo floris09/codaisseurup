@@ -39,7 +39,7 @@ class EventsController < ApplicationController
   def update
     if @event.update(event_params)
       image_params.each do |image|
-        @room.photos.create(image: image)
+        @event.photos.create(image: image)
       end
       redirect_to @event, notice: "Event Updated"
     else
