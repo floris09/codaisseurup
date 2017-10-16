@@ -10,4 +10,7 @@ Rails.application.routes.draw do
   get "about" => "pages#about"
   get "terms" => "pages#terms"
 
+  namespace :api do
+    resources :events
+  end
 end

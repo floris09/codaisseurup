@@ -15,4 +15,11 @@ class Event < ApplicationRecord
   def self.order_by_price
     order :price
   end
+
+  def self.order_by_name
+    order(name: :asc)
+  end
+
+  scope :published, -> { where(active: true) }
+
 end

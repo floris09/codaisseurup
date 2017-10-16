@@ -55,5 +55,25 @@ RSpec.describe Event, type: :model do
     end
 end
 
+  describe ".order_by_name" do
+    let!(:event3) { create :event, name:"EF" }
+    let!(:event1) { create :event, name:"AB" }
+    let!(:event2) { create :event, name:"CD" }
+
+    it "orders in ascending order" do
+      expect(Event.order_by_name).to eq([event1, event2, event3])
+    end
+  end
+
+  describe "scope :published" do
+    let!(:event3) { create :event, active: false }
+    let!(:event1) { create :event, active: true }
+    let!(:event2) { create :event, active: false }
+
+    it "shows only active events" do
+      expect(Event.published).to eq([event1])
+    end
+  end
+
 
 end
